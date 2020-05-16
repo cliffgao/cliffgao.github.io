@@ -8,9 +8,13 @@ You can also find our lab [http://www.biomath.cn/](http://www.biomath.cn/)
 ##  Address
 **Jianzhao Gao**
 Associate Professor
+
 Email: _gaojz AT nankai.edu.cn_ 
+
 Mail: School of Mathematical Sciences, 
+
 Nankai University,
+
 No.94 Weijin Road, Tianjin, China.
 
 
