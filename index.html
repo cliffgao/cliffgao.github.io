@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cliff Gao - Personal Academic Homepage">
+    <title>Cliff Gao | Academic Homepage</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 全局样式 --- */
+        :root {
+            --primary-color: #2c3e50; /*以此为主色调*/
+            --link-color: #3498db;
+            --link-hover-color: #2980b9;
+            --bg-color: #fcfcfc;
+            --text-color: #333;
+            --date-color: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        /* --- 布局容器 --- */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-wrap: wrap; /* 移动端适配 */
+            gap: 40px;
+        }
+
+        /* --- 左侧栏（个人信息） --- */
+        .profile-sidebar {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+            color: var(--primary-color);
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .affiliation {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #555;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: left;
+            display: inline-block;
+        }
+
+        /* --- 右侧栏（主要内容） --- */
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 新闻列表 --- */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .news-date {
+            min-width: 100px;
+            font-weight: bold;
+            color: var(--date-color);
+            font-family: monospace;
+        }
+
+        /* --- 论文列表 --- */
+        .paper-item {
+            margin-bottom: 25px;
+        }
+
+        .paper-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+        }
+        
+        .paper-title:hover {
+            color: var(--link-color);
+        }
+
+        .paper-authors {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 3px;
+        }
+
+        .me {
+            font-weight: bold;
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .paper-venue {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .tag-links {
+            margin-top: 5px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            color: var(--link-color);
+            margin-right: 5px;
+            text-decoration: none !important;
+        }
+
+        .tag:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
+
+        /* --- 移动端适配 --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .profile-sidebar {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧个人资料 -->
+        <aside class="profile-sidebar">
+            <!-- 请替换为你自己的照片，图片放在同级目录下，命名为 avatar.jpg，或者修改这里的 src -->
+            <!-- 这里使用占位图，请务必替换 -->
+            <img src="https://ui-avatars.com/api/?name=Cliff+Gao&background=2c3e50&color=fff&size=256" alt="Cliff Gao" class="avatar">
+            
+            <h1 class="name">Cliff Gao</h1>
+            <div class="title">Ph.D. Candidate / Researcher</div>
+            <div class="affiliation">Department of Computer Science<br>[Your University Name]</div>
+            
+            <div class="social-links">
+                <!-- 你的 GitHub 链接 -->
+                <a href="https://github.com/cliffgao" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <!-- 请替换为你的 Google Scholar -->
+                <a href="#" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <!-- 请替换为你的 Twitter/X -->
+                <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <!-- 请替换为你的 LinkedIn -->
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> City, Country</p>
+            </div>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section id="about">
+                <div class="section-title">About Me</div>
+                <p>
+                    Hi, I am Cliff Gao. I am currently a Ph.D. candidate at [University Name], advised by Prof. [Advisor Name]. 
+                </p>
+                <p>
+                    My research interests include <strong>Deep Learning</strong>, <strong>Computer Vision</strong>, and <strong>Graph Neural Networks</strong>. I am passionate about building interpretable and efficient AI systems.
+                </p>
+                <p>
+                    Previously, I received my B.S. degree from [University Name] in 2020.
+                </p>
+            </section>
+
+            <!-- News Section -->
+            <section id="news">
+                <div class="section-title">News</div>
+                <ul class="news-list">
+                    <li class="news-item">
+                        <span class="news-date">[Nov 2025]</span>
+                        <span>One paper accepted to <strong>CVPR 2026</strong>!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[Aug 2025]</span>
+                        <span>Started my internship at [Company Name].</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[May 2025]</span>
+                        <span>Presented our work at <strong>ICLR 2025</strong> in Singapore.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications">
+                <div class="section-title">Selected Publications</div>
+                
+                <!-- 论文条目 1 -->
+                <div class="paper-item">
+                    <a href="#" class="paper-title">TopoGNN: Topological Graph Neural Networks for RNA Structure Assessment</a>
+                    <div class="paper-authors">
+                        <span class="me">Cliff Gao</span>, Collaborator A, Collaborator B, Advisor Name
+                    </div>
+                    <div class="paper-venue">
+                        International Conference on Learning Representations (ICLR), 2025
+                    </div>
+                    <div class="tag-links">
+                        <a href="#" class="tag">PDF</a>
+                        <a href="https://github.com/cliffgao/TopoGNN" class="tag">Code</a>
+                        <a href="#" class="tag">BibTeX</a>
+                    </div>
+                </div>
+
+                <!-- 论文条目 2 -->
+                <div class="paper-item">
+                    <a href="#" class="paper-title">Another Amazing Research Paper Title</a>
+                    <div class="paper-authors">
+                        Collaborator C, <span class="me">Cliff Gao</span>, Advisor Name
+                    </div>
+                    <div class="paper-venue">
+                        Conference on Computer Vision and Pattern Recognition (CVPR), 2024
+                    </div>
+                    <div class="tag-links">
+                        <a href="#" class="tag">PDF</a>
+                        <a href="#" class="tag">Project Page</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Education / Teaching / Misc (Optional) -->
+            <section id="misc">
+                <div class="section-title">Education</div>
+                <div style="margin-bottom: 10px;">
+                    <strong>[Your University]</strong> <span style="float: right;">2020 - Present</span><br>
+                    Ph.D. in Computer Science
+                </div>
+                <div>
+                    <strong>[Your University]</strong> <span style="float: right;">2016 - 2020</span><br>
+                    B.S. in Computer Science
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #777; font-size: 0.8rem; border-top: 1px solid #eee; margin-top: 40px;">
+        &copy; 2025 Cliff Gao. Powered by GitHub Pages.
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cliff Gao - Personal Academic Homepage">
+    <title>Cliff Gao | Academic Homepage</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 全局样式 --- */
+        :root {
+            --primary-color: #2c3e50; /*以此为主色调*/
+            --link-color: #3498db;
+            --link-hover-color: #2980b9;
+            --bg-color: #fcfcfc;
+            --text-color: #333;
+            --date-color: #7f8c8d;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        /* --- 布局容器 --- */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-wrap: wrap; /* 移动端适配 */
+            gap: 40px;
+        }
+
+        /* --- 左侧栏（个人信息） --- */
+        .profile-sidebar {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+            color: var(--primary-color);
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .affiliation {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: #555;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: left;
+            display: inline-block;
+        }
+
+        /* --- 右侧栏（主要内容） --- */
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 新闻列表 --- */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .news-date {
+            min-width: 100px;
+            font-weight: bold;
+            color: var(--date-color);
+            font-family: monospace;
+        }
+
+        /* --- 论文列表 --- */
+        .paper-item {
+            margin-bottom: 25px;
+        }
+
+        .paper-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+        }
+        
+        .paper-title:hover {
+            color: var(--link-color);
+        }
+
+        .paper-authors {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 3px;
+        }
+
+        .me {
+            font-weight: bold;
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .paper-venue {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .tag-links {
+            margin-top: 5px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            color: var(--link-color);
+            margin-right: 5px;
+            text-decoration: none !important;
+        }
+
+        .tag:hover {
+            background-color: var(--link-color);
+            color: white;
+        }
+
+        /* --- 移动端适配 --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .profile-sidebar {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧个人资料 -->
+        <aside class="profile-sidebar">
+            <!-- 请替换为你自己的照片，图片放在同级目录下，命名为 avatar.jpg，或者修改这里的 src -->
+            <!-- 这里使用占位图，请务必替换 -->
+            <img src="https://ui-avatars.com/api/?name=Cliff+Gao&background=2c3e50&color=fff&size=256" alt="Cliff Gao" class="avatar">
+            
+            <h1 class="name">Cliff Gao</h1>
+            <div class="title">Ph.D. Candidate / Researcher</div>
+            <div class="affiliation">Department of Computer Science<br>[Your University Name]</div>
+            
+            <div class="social-links">
+                <!-- 你的 GitHub 链接 -->
+                <a href="https://github.com/cliffgao" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <!-- 请替换为你的 Google Scholar -->
+                <a href="#" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <!-- 请替换为你的 Twitter/X -->
+                <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <!-- 请替换为你的 LinkedIn -->
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> City, Country</p>
+            </div>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section id="about">
+                <div class="section-title">About Me</div>
+                <p>
+                    Hi, I am Cliff Gao. I am currently a Ph.D. candidate at [University Name], advised by Prof. [Advisor Name]. 
+                </p>
+                <p>
+                    My research interests include <strong>Deep Learning</strong>, <strong>Computer Vision</strong>, and <strong>Graph Neural Networks</strong>. I am passionate about building interpretable and efficient AI systems.
+                </p>
+                <p>
+                    Previously, I received my B.S. degree from [University Name] in 2020.
+                </p>
+            </section>
+
+            <!-- News Section -->
+            <section id="news">
+                <div class="section-title">News</div>
+                <ul class="news-list">
+                    <li class="news-item">
+                        <span class="news-date">[Nov 2025]</span>
+                        <span>One paper accepted to <strong>CVPR 2026</strong>!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[Aug 2025]</span>
+                        <span>Started my internship at [Company Name].</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[May 2025]</span>
+                        <span>Presented our work at <strong>ICLR 2025</strong> in Singapore.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications">
+                <div class="section-title">Selected Publications</div>
+                
+                <!-- 论文条目 1 -->
+                <div class="paper-item">
+                    <a href="#" class="paper-title">TopoGNN: Topological Graph Neural Networks for RNA Structure Assessment</a>
+                    <div class="paper-authors">
+                        <span class="me">Cliff Gao</span>, Collaborator A, Collaborator B, Advisor Name
+                    </div>
+                    <div class="paper-venue">
+                        International Conference on Learning Representations (ICLR), 2025
+                    </div>
+                    <div class="tag-links">
+                        <a href="#" class="tag">PDF</a>
+                        <a href="https://github.com/cliffgao/TopoGNN" class="tag">Code</a>
+                        <a href="#" class="tag">BibTeX</a>
+                    </div>
+                </div>
+
+                <!-- 论文条目 2 -->
+                <div class="paper-item">
+                    <a href="#" class="paper-title">Another Amazing Research Paper Title</a>
+                    <div class="paper-authors">
+                        Collaborator C, <span class="me">Cliff Gao</span>, Advisor Name
+                    </div>
+                    <div class="paper-venue">
+                        Conference on Computer Vision and Pattern Recognition (CVPR), 2024
+                    </div>
+                    <div class="tag-links">
+                        <a href="#" class="tag">PDF</a>
+                        <a href="#" class="tag">Project Page</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Education / Teaching / Misc (Optional) -->
+            <section id="misc">
+                <div class="section-title">Education</div>
+                <div style="margin-bottom: 10px;">
+                    <strong>[Your University]</strong> <span style="float: right;">2020 - Present</span><br>
+                    Ph.D. in Computer Science
+                </div>
+                <div>
+                    <strong>[Your University]</strong> <span style="float: right;">2016 - 2020</span><br>
+                    B.S. in Computer Science
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #777; font-size: 0.8rem; border-top: 1px solid #eee; margin-top: 40px;">
+        &copy; 2025 Cliff Gao. Powered by GitHub Pages.
+    </footer>
+
+</body>
+</html>
